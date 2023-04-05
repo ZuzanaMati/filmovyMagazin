@@ -1,28 +1,56 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
+import Home from './Home/Home';
+import Reviews from './Reviews/Reviews';
+import Articles from './Articles/Articles';
+import Movies from './Movies/Movies';
+import Menu from './Menu/Menu';
+import MovieList from './MovieList/MovieList';
+import Movie from './Movie/Movie';
+import { createBrowserRouter, Outlet, RouterProvider, Link } from 'react-router-dom';
 
 const App = () => {
   return (
     <div className="container">
-      <header>
-        <div className="logo" />
-        <h1>React webová aplikace</h1>
-      </header>
-      <main>
-        <p>
-          Startovací šablona pro webovou aplikaci v Reactu. Vytvořeno pomocí
-          <a href="https://www.npmjs.com/package/create-czechitas-app">create-czechitas-app</a>
-          .
-        </p>
-      </main>
-      <footer>
-        <p>Czechitas, Digitální akademie: Web</p>
-      </footer>
+      <Menu />
+      <Outlet />
     </div>
   );
 };
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/reviews",
+        element: <Reviews />
+      },
+      {
+        path: "/articles",
+        element: <Articles />
+      },
+      {
+        path: "/movies",
+        element: <Movies />,
+        children: [
+          {
+            path: "/movies/:id",
+            element: <Movie />
+          }
+        ]
+
+      }
+    ]
+  }
+])
+
 createRoot(
   document.querySelector('#app'),
-).render(<App />);
+).render(<RouterProvider router={router} />);
