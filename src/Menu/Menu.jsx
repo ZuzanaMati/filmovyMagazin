@@ -1,15 +1,22 @@
 import React from "react";
 import "./Menu.css"
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Menu = () => {
 
     return (
         <nav className="menu">
-            <Link to="/">Home</Link>
-            <Link to="/reviews">Reviews</Link>
-            <Link to="/articles">Articles</Link>
-            <Link to="/movies">Movies</Link>
+            <NavLink to="/"
+                className={({ isActive }) => isActive ? "active" : ""} >Home</NavLink>
+
+            <NavLink to="/reviews"
+                className={({ isActive }) => isActive ? "active" : ""}>Reviews</NavLink>
+
+            <NavLink to="/articles"
+                className={({ isActive }) => isActive ? "active" : ""}>Articles</NavLink>
+
+            <NavLink to="/movies"
+                className={({ isActive }) => isActive ? "active" : ""}>Movies</NavLink>
         </nav>
     )
 }

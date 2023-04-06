@@ -3,15 +3,22 @@ import { useParams } from "react-router-dom";
 import movies from "../movie-database";
 
 const Movie = () => {
-    const { movieId } = useParams()
-    const movieData = movies.find((movie) => movie.id === movieId)
+    const { id } = useParams()
+    const movieData = movies.find((movie) => (
+        movie.id === Number(id)
 
-    console.log(movieData)
+    ))
 
     return (
-        <div>
-            {/* <h1>{movieData.title}</h1> */}
+        <div className="movie">
+            <img src={movieData.poster} alt={movieData.title} />
+
+            <h2>{movieData.title}</h2>
+
+            <p>{movieData.storyline}</p>
+
         </div>
+
 
     )
 }

@@ -6,9 +6,9 @@ import Reviews from './Reviews/Reviews';
 import Articles from './Articles/Articles';
 import Movies from './Movies/Movies';
 import Menu from './Menu/Menu';
-import MovieList from './MovieList/MovieList';
 import Movie from './Movie/Movie';
-import { createBrowserRouter, Outlet, RouterProvider, Link } from 'react-router-dom';
+import ErrorPage from './ErrorPage/ErrorPage';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 const App = () => {
   return (
@@ -23,6 +23,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
